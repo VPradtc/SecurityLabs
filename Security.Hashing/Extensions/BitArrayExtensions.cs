@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 
 namespace Security.Hashing.Extensions
 {
@@ -24,6 +25,25 @@ namespace Security.Hashing.Extensions
             }
 
             return chunk;
+        }
+
+        public static BitArray LeftRotate(this BitArray array, int shiftAmount)
+        {
+            var intValue = array.ToInt();
+
+            var shiftedInt = intValue << shiftAmount;
+
+            return new BitArray(BitConverter.GetBytes(shiftedInt));
+        }
+
+        public static int ToInt(this BitArray bitArray)
+        {
+            if (bitArray.Length > 32)
+                throw new ArgumentException("Argument length shall be at most 32 bits.");
+
+            int[] array = new int[1];
+            bitArray.CopyTo(array, 0);
+            return array[0];
         }
     }
 }

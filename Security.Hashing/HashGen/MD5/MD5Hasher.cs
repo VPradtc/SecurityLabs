@@ -11,16 +11,23 @@ namespace Security.Hashing.HashGen.MD5
 {
     public class MD5Hasher : IHasher
     {
-        private readonly IMD5TransformationFunction _transformFunction;
+        private readonly MD5TransformationStep _transformationStep;
 
         private readonly int[] _sinuses;
+        private readonly int[] _shiftMap;
 
         public MD5Hasher()
         {
-            _transformFunction = new CycleMD5TransformationFunction();
+            _transformationStep = new MD5TransformationStep();
 
             _sinuses = Enumerable.Range(0, 64)
                 .Select(i => (int)Math.Floor(Math.Pow(2, 32) * Math.Abs(Math.Sin(i + 1))))
+                .ToArray();
+
+            _shiftMap = new int[] { 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22 }
+                .Concat(new int[] { 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20 })
+                .Concat(new int[] { 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23 })
+                .Concat(new int[] { 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21 })
                 .ToArray();
         }
 
@@ -35,7 +42,39 @@ namespace Security.Hashing.HashGen.MD5
             for (int chunkIndex = 0; chunkIndex < paddedInput.Length / 512; chunkIndex++)
             {
                 var currentChuck = RetrieveBitChunk(paddedInput, chunkIndex);
+
+                var currentChunkBuffer = buffer;
+
+                for (int i = 0; i < 63; i++)
+                {
+                    var stepResult = _transformationStep.Transform(
+                        i
+                        , currentChunkBuffer.B
+                        , currentChunkBuffer.C
+                        , currentChunkBuffer.D);
+
+                    var f = new BitArray(BitConverter.GetBytes(
+                            stepResult.TransformedArray.ToInt()
+                            + currentChunkBuffer.A.ToInt()
+                            + _sinuses[i]
+                            + currentChuck.GetWord(stepResult.ChunkWordIndex).ToInt()
+                        ));
+
+                    var currentChunkBufferComputed = new MD5Buffer
+                    {
+                        A = currentChunkBuffer.D,
+                        B = currentChunkBuffer.C,
+                        C = new BitArray(BitConverter.GetBytes(
+                                currentChunkBuffer.B.ToInt() + f.LeftRotate(_shiftMap[i]).ToInt()
+                            )),
+                        D = currentChunkBuffer.C,
+                    };
+
+                    buffer = buffer.Add(currentChunkBufferComputed);
+                }
             }
+
+            return buffer.ToHexString();
         }
 
         private MD5Chunk RetrieveBitChunk(BitArray input, int chunkIndex)

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Security.Hashing.Extensions
+using Security.Hashing.Extensions;
 
 namespace Security.Hashing.HashGen.MD5
 {
@@ -17,9 +17,9 @@ namespace Security.Hashing.HashGen.MD5
             this._chunk = chunk;
         }
 
-        public MD5Word GetWord(int index)
+        public BitArray GetWord(int index)
         {
-            return new MD5Word(_chunk.SubSequence(index, index + 32));
+            return _chunk.SubSequence(index, index + 32);
         }
     }
 }

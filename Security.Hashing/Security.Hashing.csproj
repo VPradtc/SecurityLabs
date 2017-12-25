@@ -39,10 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\BitArrayExtensions.cs" />
     <Compile Include="HashGen\IHasher.cs" />
+    <Compile Include="HashGen\MD5\MD5Buffer.cs" />
+    <Compile Include="HashGen\MD5\MD5TransformationStepResult.cs" />
+    <Compile Include="HashGen\MD5\MD5Chunk.cs" />
     <Compile Include="HashGen\MD5\MD5Hasher.cs" />
     <Compile Include="HashGen\MD5\IMD5TransformationFunction.cs" />
-    <Compile Include="HashGen\MD5\Transformation\CycleMD5TransformationFunction.cs" />
+    <Compile Include="HashGen\MD5\Transformation\MD5TransformationStep.cs" />
     <Compile Include="HashGen\MD5\Transformation\Functions\ITransformMD5TransformationFunction.cs" />
     <Compile Include="HashGen\MD5\Transformation\Functions\HTransformMD5TransformationFunction.cs" />
     <Compile Include="HashGen\MD5\Transformation\Functions\GTransformMD5TransformationFunction.cs" />
