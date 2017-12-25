@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Text;
 
 namespace Security.Hashing.Extensions
 {
@@ -44,6 +45,52 @@ namespace Security.Hashing.Extensions
             int[] array = new int[1];
             bitArray.CopyTo(array, 0);
             return array[0];
+        }
+
+        public static byte[] ToByteArray(this BitArray bits)
+        {
+            int numBytes = bits.Count / 8;
+            if (bits.Count % 8 != 0) numBytes++;
+
+            byte[] bytes = new byte[numBytes];
+            int byteIndex = 0, bitIndex = 0;
+
+            for (int i = 0; i < bits.Count; i++)
+            {
+                if (bits[i])
+                    bytes[byteIndex] |= (byte)(1 << (7 - bitIndex));
+
+                bitIndex++;
+                if (bitIndex == 8)
+                {
+                    bitIndex = 0;
+                    byteIndex++;
+                }
+            }
+
+            return bytes;
+        }
+
+        public static string ToDebugHexString(this BitArray bits)
+        {
+            StringBuilder sb = new StringBuilder(bits.Length / 4);
+
+            for (int i = 0; i < bits.Length; i += 4)
+            {
+                int v = (bits[i] ? 8 : 0) |
+                        (bits[i + 1] ? 4 : 0) |
+                        (bits[i + 2] ? 2 : 0) |
+                        (bits[i + 3] ? 1 : 0);
+
+                if (i % 16 == 0)
+                {
+                    sb.Append(" ");
+                }
+
+                sb.Append(v.ToString("X1"));
+            }
+
+           return sb.ToString();
         }
     }
 }

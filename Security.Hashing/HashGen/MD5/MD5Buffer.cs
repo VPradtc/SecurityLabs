@@ -33,5 +33,17 @@ namespace Security.Hashing.HashGen.MD5
                 D.ToInt().ToString("X2")
             );
         }
+        public string ToDebugHexString()
+        {
+            return String.Concat(
+                A.ToInt().ToString("X2"),
+                " ",
+                B.ToInt().ToString("X2"),
+                " ",
+                C.ToInt().ToString("X2"),
+                " ",
+                D.ToInt().ToString("X2")
+            );
+        }
     }
 }

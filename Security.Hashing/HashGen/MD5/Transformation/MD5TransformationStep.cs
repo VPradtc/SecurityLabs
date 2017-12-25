@@ -41,9 +41,6 @@ namespace Security.Hashing.HashGen.MD5.Transformation
 
         public MD5TransformationStepResult Transform(int index, BitArray b, BitArray c, BitArray d)
         {
-            var transformedArray = _currentFunction.Value.Item1.Transform(b, c, d);
-            var chunkWordIndex = _currentFunction.Value.Item2.Invoke(index);
-
             _currentFunctionInvocationCount++;
 
             if (_currentFunctionInvocationCount % 16 == 0)
@@ -55,6 +52,9 @@ namespace Security.Hashing.HashGen.MD5.Transformation
                     _currentFunctionInvocationCount = 0;
                 }
             }
+
+            var transformedArray = _currentFunction.Value.Item1.Transform(b, c, d);
+            var chunkWordIndex = _currentFunction.Value.Item2.Invoke(index);
 
             var result = new MD5TransformationStepResult
             {
