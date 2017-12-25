@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.Hashing.Tests", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.Hashing.UI", "Security.Hashing.UI\Security.Hashing.UI.csproj", "{D092BDD0-4A38-4C99-8C2C-1FF0DA3AB22B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.Encryption", "Security.Encryption\Security.Encryption.csproj", "{43334DD1-CBFC-4B3F-A113-A7E12909FCDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.Encryption.UI", "Security.Encryption.UI\Security.Encryption.UI.csproj", "{8FCB7485-09B7-4B15-BC53-DDB6EC1FE323}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{D092BDD0-4A38-4C99-8C2C-1FF0DA3AB22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D092BDD0-4A38-4C99-8C2C-1FF0DA3AB22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D092BDD0-4A38-4C99-8C2C-1FF0DA3AB22B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43334DD1-CBFC-4B3F-A113-A7E12909FCDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43334DD1-CBFC-4B3F-A113-A7E12909FCDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43334DD1-CBFC-4B3F-A113-A7E12909FCDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43334DD1-CBFC-4B3F-A113-A7E12909FCDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FCB7485-09B7-4B15-BC53-DDB6EC1FE323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCB7485-09B7-4B15-BC53-DDB6EC1FE323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FCB7485-09B7-4B15-BC53-DDB6EC1FE323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCB7485-09B7-4B15-BC53-DDB6EC1FE323}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
