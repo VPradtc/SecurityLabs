@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.Hashing", "Securit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.Hashing.Tests", "Security.Hashing.Tests\Security.Hashing.Tests.csproj", "{8B916EA3-BE38-487D-9DD0-D6C9024FD5DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.Hashing.UI", "Security.Hashing.UI\Security.Hashing.UI.csproj", "{D092BDD0-4A38-4C99-8C2C-1FF0DA3AB22B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8B916EA3-BE38-487D-9DD0-D6C9024FD5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B916EA3-BE38-487D-9DD0-D6C9024FD5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B916EA3-BE38-487D-9DD0-D6C9024FD5DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D092BDD0-4A38-4C99-8C2C-1FF0DA3AB22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D092BDD0-4A38-4C99-8C2C-1FF0DA3AB22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D092BDD0-4A38-4C99-8C2C-1FF0DA3AB22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D092BDD0-4A38-4C99-8C2C-1FF0DA3AB22B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
