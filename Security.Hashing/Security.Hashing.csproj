@@ -41,8 +41,6 @@
   <ItemGroup>
     <Compile Include="Extensions\BitArrayExtensions.cs" />
     <Compile Include="HashGen\IHasher.cs" />
-    <Compile Include="HashGen\MD5Static\Helpers.cs" />
-    <Compile Include="HashGen\MD5Static\MD5.cs" />
     <Compile Include="HashGen\MD5\MD5Buffer.cs" />
     <Compile Include="HashGen\MD5\MD5TransformationStepResult.cs" />
     <Compile Include="HashGen\MD5\MD5Chunk.cs" />
